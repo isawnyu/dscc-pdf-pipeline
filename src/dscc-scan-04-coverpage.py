@@ -109,7 +109,6 @@ if __name__ == "__main__":
     df = load_metadata()
 
     for file in files:
-        # TODO: Write cache option; check if file is already imaged
         print(f"Adding coverpage to {file}...")
         metadata_row = df.loc[file.split("/")[-1]]
         author, title, date, publisher, place, filename = (
@@ -151,7 +150,6 @@ if __name__ == "__main__":
         with open(f"{COVER_OUT_FILEPATH}/{filename}", "wb") as f:
             merger.write(f)
 
-        # TODO: Delete file
-        os.remove(pdf)
+        os.remove(file)
 
     print("Done!\n")
